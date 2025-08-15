@@ -1,0 +1,250 @@
+.course-list-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 200px);
+}
+
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-list h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.course-list .course-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s ease;
+}
+
+.course-list .course-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-list .course-item h2 {
+  font-size: 1.5em;
+  margin: 0 0 8px 0;
+}
+
+.course-list .course-item p {
+  margin: 0;
+  color: #666;
+}
+
+/* Results and status messages */
+.results-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 12px 16px;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.results-summary p {
+  margin: 0;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.loading-message {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.error-message {
+  color: #dc2626;
+  padding: 16px;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  background-color: #fef2f2;
+  margin-bottom: 20px;
+}
+
+.error-message p {
+  margin: 4px 0;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.no-results p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* Pagination Styles */
+.pagination-container {
+  /* margin-top: 40px; */
+  /* padding-top: 30px; */
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination-btn {
+  padding: 7px 14px;
+  border: 1px solid #d1d5db;
+  background-color: #ff4444;
+  color: #1d2025;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 0;
+  min-width: 40px;
+  text-align: center;
+}
+
+.pagination-btn:hover:not(.disabled) {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.pagination-btn.active {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+.pagination-btn.disabled {
+  background-color: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.pagination-ellipsis {
+  padding: 10px 8px;
+  color: #9ca3af;
+  font-size: 14px;
+  user-select: none;
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.page-input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 0;
+  font-size: 14px;
+  text-align: center;
+  margin-left: 8px;
+}
+
+.page-input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 1px #000000;
+}
+
+/* Responsive pagination */
+@media (max-width: 768px) {
+  .pagination-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination {
+    gap: 4px;
+  }
+
+  .pagination-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+    min-width: 40px;
+  }
+
+  .pagination-info {
+    font-size: 13px;
+  }
+
+  .page-input {
+    width: 50px;
+    padding: 4px 6px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+    min-width: 36px;
+  }
+
+  /* Hide some page numbers on very small screens */
+  .pagination-btn:nth-child(n+6):nth-child(-n+10) {
+    display: none;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .course-list-container {
+    padding: 16px;
+  }
+
+  .results-summary {
+    padding: 8px 12px;
+  }
+
+  .results-summary p {
+    font-size: 12px;
+  }
+}

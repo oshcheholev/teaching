@@ -1,0 +1,25 @@
+
+.header
+{
+	max-width: 1180px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	font-family: Karmilla, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 1.5rem;
+	width: 100%;
+	margin: 0 auto;
+	padding: 10px 20px 5px 20px;
+	background-color: white;
+	border-bottom: 1px solid #ccc;
+}
+
+.logo
+    {
+        display: inline-block;
+        font-family: Karmilla, Helvetica Neue, Helvetica, Arial, sans-serif;
+        /* position: absolute; */
+        min-width: 20%;
+        border-right: 2px solid #f0f0f0;
+	}

@@ -1,0 +1,703 @@
+/* Inspired by uni-ak.ac.at design system */
+.search-bar-container {
+  position: relative;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.search-bar {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.course-search-input {
+  flex: 1;
+  padding: 4px 4px;
+  border: 1px solid #d1d5db;
+  border-radius: 0; /* Academic sites often use minimal rounded corners */
+  font-size: 16px;
+  line-height: 1;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out;
+  min-height: 38px;
+  box-sizing: border-box;
+}
+
+.course-search-input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 1px #000000;
+}
+
+.course-search-input::placeholder {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.search-button {
+  padding: 4px 15px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: lowercase; /* Following academic convention */
+  letter-spacing: 0.025em;
+  transition: all 0.2s ease-in-out;
+  min-height: 38px;
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background-color: #333333;
+  transform: translateY(-1px);
+}
+
+.search-button:active {
+  transform: translateY(0);
+  background-color: #555555;
+}
+
+/* Filters Container */
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.filters-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* Filter Section (for each individual filter) */
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Teacher Filter Section */
+.teacher-filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selected-teachers-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Selected Items Container (reusable for all filters) */
+.selected-items-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+}
+
+.selected-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  flex: 1;
+}
+
+/* Item Tags (reusable for all filter types) */
+.item-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+  font-size: 12px;
+  color: #374151;
+  gap: 6px;
+  transition: all 0.2s;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-tag:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.remove-item:hover {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.clear-all-items {
+  padding: 4px 8px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.clear-all-items:hover {
+  background-color: #dc2626;
+}
+
+/* Filter Search Container (reusable) */
+.filter-search-container {
+  position: relative;
+  width: 100%;
+}
+
+.filter-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out;
+  min-height: 36px;
+  box-sizing: border-box;
+}
+
+.filter-search-input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 1px #000000;
+}
+
+.filter-search-input::placeholder {
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Filter Dropdown (reusable) */
+.filter-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.filter-dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.filter-dropdown-item:hover {
+  background-color: #f9fafb;
+}
+
+.filter-dropdown-item.selected {
+  background-color: #f0f9ff;
+  border-left: 3px solid #000000;
+}
+
+.filter-dropdown-item.loading,
+.filter-dropdown-item.no-results {
+  cursor: default;
+  color: #6b7280;
+  font-style: italic;
+  justify-content: center;
+}
+
+.filter-dropdown-item.loading:hover,
+.filter-dropdown-item.no-results:hover {
+  background-color: transparent;
+}
+
+.item-name {
+  font-weight: 500;
+  color: #111827;
+  flex: 1;
+  text-align: left;
+}
+
+.item-description {
+  font-size: 11px;
+  color: #6b7280;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* Gender/Diversity Toggle */
+.gender-diversity-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background-color: #d1d5db;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+  outline: none;
+}
+
+.toggle-switch.active {
+  background-color: #000000;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-switch.active::after {
+  transform: translateX(24px);
+}
+
+.toggle-label {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Gender Diversity Checkbox */
+.checkbox-container {
+  margin-top: 8px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: all 0.2s;
+}
+
+.checkbox-option:hover {
+  background-color: #f9fafb;
+  border-radius: 2px;
+  padding: 8px 8px;
+  margin: 0 -8px;
+}
+
+.checkbox-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #000000;
+}
+
+.checkbox-label {
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.4;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-label {
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Gender Diversity Select (keeping for backwards compatibility) */
+.gender-diversity-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out;
+  min-height: 36px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.gender-diversity-select:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 1px #000000;
+}
+
+/* Clear All Filters Section */
+.clear-all-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.clear-all-filters {
+  padding: 8px 16px;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.clear-all-filters:hover {
+  background-color: #4b5563;
+}
+
+.selected-teachers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.teacher-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 1px;
+  font-size: 11px;
+  color: #374151;
+  gap: 6px;
+}
+
+.remove-teacher {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1px;
+  transition: all 0.2s;
+}
+
+.remove-teacher:hover {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.clear-all-teachers {
+  padding: 4px 8px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 1px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.clear-all-teachers:hover {
+  background-color: #dc2626;
+}
+
+/* Teacher Search Container */
+.teacher-search-container {
+  position: relative;
+}
+
+.teacher-search-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out;
+  min-height: 25px;
+  box-sizing: border-box;
+}
+
+.teacher-search-input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 1px #000000;
+}
+
+.teacher-search-input::placeholder {
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Teacher Dropdown */
+.teacher-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 4px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-item:hover {
+  background-color: #f9fafb;
+}
+
+.dropdown-item.selected {
+  background-color: #f0f9ff;
+  border-left: 3px solid #000000;
+}
+
+.dropdown-item.loading,
+.dropdown-item.no-results {
+  cursor: default;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.dropdown-item.loading:hover,
+.dropdown-item.no-results:hover {
+  background-color: transparent;
+}
+
+.teacher-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.teacher-subject {
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: 8px;
+}
+
+.checkmark {
+  color: #059669;
+  font-weight: bold;
+  margin-left: auto;
+}
+
+/* Dropdown Overlay */
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-bar-container {
+    width: 100%;
+    margin: 16px 0;
+  }
+
+  .search-form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .course-search-input,
+  .search-button {
+    width: 100%;
+  }
+
+  .filters-container {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .filters-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .filter-section {
+    gap: 4px;
+  }
+
+  .item-tag {
+    font-size: 11px;
+    padding: 3px 6px;
+    max-width: 150px;
+  }
+
+  .clear-all-items {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .filter-dropdown {
+    max-height: 150px;
+  }
+
+  .filter-dropdown-item {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .toggle-switch {
+    width: 40px;
+    height: 20px;
+  }
+
+  .toggle-switch::after {
+    width: 16px;
+    height: 16px;
+  }
+
+  .toggle-switch.active::after {
+    transform: translateX(20px);
+  }
+
+  .checkbox-option {
+    padding: 6px 0;
+  }
+
+  .checkbox-option:hover {
+    padding: 6px 6px;
+    margin: 0 -6px;
+  }
+
+  .checkbox-label {
+    font-size: 12px;
+  }
+
+  .selected-teachers {
+    gap: 6px;
+  }
+
+  .teacher-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .teacher-dropdown {
+    max-height: 150px;
+  }
+}
+
+.search-bar button:hover {
+  background-color: #333333;
+  transform: translateY(-1px);
+}
+
+.search-bar button:active {
+  transform: translateY(0);
+  background-color: #000000;
+}

@@ -1,0 +1,68 @@
+/* BackButton Component Styles */
+.back-button {
+  position: absolute;
+  top:40px;
+  right: 20px;
+  background: none;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  z-index: 100;
+  font-family: inherit;
+}
+
+.back-button:hover {
+  background-color: #f8f9fa;
+  border-color: #000;
+  color: #000;
+  transform: translateX(2px); /* Move right on hover since it's on the right */
+}
+
+.back-button:active {
+  transform: translateX(0);
+}
+
+.back-button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Variants for different positions */
+.back-button.top-left {
+  top: 20px;
+  left: 20px;
+  right: auto;
+}
+
+.back-button.top-left:hover {
+  transform: translateX(-2px); /* Move left on hover for left-positioned button */
+}
+
+.back-button.inline {
+  position: relative;
+  top: auto;
+  right: auto;
+  margin: 0;
+  display: inline-block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .back-button {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 20px;
+    display: block;
+    width: fit-content;
+  }
+  
+  .back-button:hover {
+    transform: none;
+  }
+}
