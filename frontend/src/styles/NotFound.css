@@ -1,0 +1,181 @@
+/* NotFound.css - Matching main app design */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  margin: 0 auto;
+  max-width: 1200px;
+  font-family: Karmilla, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.not-found .error-code {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #ff4444;
+  margin: 0;
+  line-height: 1;
+  text-shadow: none;
+}
+
+.not-found .error-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ff4444;
+  margin: 1rem 0;
+  font-family: Karmilla, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.not-found .error-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 1rem 0 2rem 0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.not-found .back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  background: white;
+  color: #333;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  font-family: Karmilla, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.not-found .back-home-btn:hover {
+  background: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #333;
+  transform: translateY(-1px);
+}
+
+.not-found .back-home-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.not-found .suggestions {
+  margin-top: 3rem;
+  padding: 24px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.not-found .suggestions h3 {
+  color: #333;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: Karmilla, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.not-found .suggestions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.not-found .suggestions li {
+  margin: 0.8rem 0;
+  color: #666;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.not-found .suggestions li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #333;
+  font-weight: bold;
+}
+
+.not-found .suggestions a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s ease;
+}
+
+.not-found .suggestions a:hover {
+  border-bottom: 1px solid #333;
+}
+
+.not-found .animation-bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .not-found {
+    padding: 30px 16px;
+    min-height: calc(100vh - 150px);
+  }
+
+  .not-found .error-code {
+    font-size: 5rem;
+  }
+
+  .not-found .error-title {
+    font-size: 2rem;
+  }
+
+  .not-found .error-description {
+    font-size: 1rem;
+    margin: 0.8rem 0 1.5rem 0;
+  }
+
+  .not-found .back-home-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .not-found .suggestions {
+    margin-top: 2rem;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .not-found .error-code {
+    font-size: 4rem;
+  }
+
+  .not-found .error-title {
+    font-size: 1.5rem;
+  }
+
+  .not-found .suggestions {
+    padding: 16px;
+  }
+}

@@ -14,8 +14,16 @@ function About() {
         <div className="about-section university-info">
           <h2>Project Overview</h2>
           <p>This page is a recreation of the University of Applied Arts Vienna course management system.</p>
-          <p>A comprehensive teaching application for browsing and managing university courses with advanced filtering capabilities.</p>
-        </div>
+		  <p><em>Note: This project is for educational purposes only and is not affiliated with the University of Applied Arts Vienna.</em></p>
+		  <p><strong>Disclaimer:</strong> This project is a personal endeavor and does not represent the views or policies of the University of Applied Arts Vienna.</p>
+          <p>The project is made for practicing and showcasing full-stack development skills.</p>
+		  <p>This version is for Development, Testing, and Staging purposes only.
+			Please do not use it in a Production environment.
+		  </p>
+		  <p><strong>About the Project:</strong></p>
+		  <p>This project is a comprehensive teaching application for browsing and managing university courses with advanced filtering capabilities.</p>
+
+		</div>
 
         <div className="about-section">
           <h2>Technology Stack</h2>

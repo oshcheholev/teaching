@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {  ACCESS_TOKEN } from './constants';
 
+// Use localhost:8000 for backend API
 const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const api = axios.create({
