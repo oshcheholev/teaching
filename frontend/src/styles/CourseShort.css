@@ -8,12 +8,15 @@
 }
 
 .course-short h3 {
+	font-size: 18px;
+	font-weight: 400;
 	margin: 0 0 5px 0;
 	color: #ff4444;
 }
 
 .course-short p {
 	margin: 5px 0;
+	font-size: 15px;
 }
 
 .course-short a {
@@ -83,7 +86,9 @@
 }
 
 .course-detail-link {
-  color: #0066cc;
+	font-size: 12px;
+	font-weight: 400;
+  color: #ff4444;
   text-decoration: none;
   font-weight: 500;
 }

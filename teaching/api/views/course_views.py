@@ -7,7 +7,7 @@ Includes list, create, detail, update, and delete operations.
 """
 
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from ..models import Course, CourseType
 from ..serializers import (
     CourseSerializer, CourseWriteSerializer, CourseTypeSerializer
@@ -88,28 +88,28 @@ class CourseCreateView(generics.CreateAPIView):
     """Create a new course."""
     queryset = Course.objects.all()
     serializer_class = CourseWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific course."""
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class CourseUpdateView(generics.UpdateAPIView):
     """Update a specific course."""
     queryset = Course.objects.all()
     serializer_class = CourseWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class CourseDeleteView(generics.DestroyAPIView):
     """Delete a specific course."""
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 # CourseType Views
@@ -124,25 +124,25 @@ class CourseTypeCreateView(generics.CreateAPIView):
     """Create a new course type."""
     queryset = CourseType.objects.all()
     serializer_class = CourseTypeSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class CourseTypeDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific course type."""
     queryset = CourseType.objects.all()
     serializer_class = CourseTypeSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class CourseTypeUpdateView(generics.UpdateAPIView):
     """Update a specific course type."""
     queryset = CourseType.objects.all()
     serializer_class = CourseTypeSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class CourseTypeDeleteView(generics.DestroyAPIView):
     """Delete a specific course type."""
     queryset = CourseType.objects.all()
     serializer_class = CourseTypeSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]

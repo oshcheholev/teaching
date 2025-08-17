@@ -1,6 +1,6 @@
 .course-list-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f8f9fa;
@@ -14,7 +14,7 @@
 }
 
 .course-list h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   margin-bottom: 20px;
   color: #333;
 }
@@ -104,7 +104,7 @@
 .pagination-container {
   /* margin-top: 40px; */
   /* padding-top: 30px; */
-  border-top: 1px solid #e5e7eb;
+  /* border-top: 1px solid #e5e7eb; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -116,7 +116,7 @@
 .pagination {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -124,10 +124,10 @@
 .pagination-btn {
   padding: 7px 14px;
   border: 1px solid #d1d5db;
-  background-color: #ff4444;
-  color: #1d2025;
+  background-color: #ffffff;
+  color: #ff4444;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   transition: all 0.2s ease;
   border-radius: 0;
@@ -141,9 +141,9 @@
 }
 
 .pagination-btn.active {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #000000;
+  background-color: #ff4444;
+  color: #ffffff;
+  border-color: #ff4444;
 }
 
 .pagination-btn.disabled {

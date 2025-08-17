@@ -56,15 +56,24 @@ urlpatterns = [
 
 	# Semesters
 	path('semesters/', views.SemesterListView.as_view(), name='semester-list'),
+	path('semesters/<int:pk>/', views.SemesterDetailView.as_view(), name='semester-detail'),
+	path('semesters/add/', views.SemesterCreateView.as_view(), name='semester-create'),
+	path('semesters/<int:pk>/update/', views.SemesterUpdateView.as_view(), name='semester-update'),
+	path('semesters/<int:pk>/delete/', views.SemesterDeleteView.as_view(), name='semester-delete'),
+
 
 	# Curriculum Subjects
 	path('curriculum-subjects/', views.CurriculumSubjectListView.as_view(), name='curriculum-subject-list'),
 	path('curriculum-subjects/<int:pk>/', views.CurriculumSubjectDetailView.as_view(), name='curriculum-subject-detail'),
 	path('curriculum-subjects/add/', views.CurriculumSubjectCreateView.as_view(), name='curriculum-subject-create'),
+	path('curriculum-subjects/<int:pk>/update/', views.CurriculumSubjectUpdateView.as_view(), name='curriculum-subject-update'),
+	path('curriculum-subjects/<int:pk>/delete/', views.CurriculumSubjectDeleteView.as_view(), name='curriculum-subject-delete'),
 
 	# Study Subjects
 	path('study-subjects/', views.StudySubjectListView.as_view(), name='study-subject-list'),
 	path('study-subjects/<int:pk>/', views.StudySubjectDetailView.as_view(), name='study-subject-detail'),
 	path('study-subjects/add/', views.StudySubjectCreateView.as_view(), name='study-subject-create'),
+	path('study-subjects/<int:pk>/update/', views.StudySubjectUpdateView.as_view(), name='study-subject-update'),
+	path('study-subjects/<int:pk>/delete/', views.StudySubjectDeleteView.as_view(), name='study-subject-delete'),
 ]
 

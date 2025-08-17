@@ -19,9 +19,9 @@ function CourseShort({ course }) {
 				)}
 			</div>
 			{/* <p>{course.description}</p> */}
-			<p>{course.description.substring(0, 300)}...</p>
+			<p>{course.description.substring(0, 800)}...</p>
 			{/* <p>Credits: {course.credits}</p> */}
-			<p>Semester: {course.semester} </p>
+			{/* <p>Semester: {course.semester} </p> */}
 		</div>
 	);
 }

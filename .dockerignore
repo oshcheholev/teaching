@@ -58,3 +58,13 @@ node_modules/
 # Virtual environment
 env/
 venv/
+
+# Development scripts and utilities
+scripts/
+fetch_*.py
+*_check.py
+*_status.py
+*_fix.py
+*.json
+enhanced_*.py
+complete_*.py

@@ -46,7 +46,8 @@ function About() {
             </div>
             <div className="tech-item">
               <strong>Database</strong><br />
-              PostgreSQL
+              Dev: SQLite <br />
+              Prod: PostgreSQL
             </div>
             <div className="tech-item">
               <strong>Deployment</strong><br />
@@ -62,6 +63,11 @@ function About() {
           <p>• Responsive design with modern UI</p>
           <p>• Department, institute, and program filtering</p>
           <p>• Teacher and course type search capabilities</p>
+		  <p>• Pagination for course listings</p>
+		  <p>• Course detail view with additional information</p>
+		  <p>• User (admin) authentication and authorization using JWT tokens</p>
+		  <p>• Admin dashboard for managing courses and users</p>
+
         </div>
 
         <div className="about-section">

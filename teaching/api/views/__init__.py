@@ -30,10 +30,13 @@ __all__ = [
     'DepartmentUpdateView', 'DepartmentDeleteView',
     'InstituteView', 'InstituteCreateView', 'InstituteDetailView',
     'InstituteUpdateView', 'InstituteDeleteView',
-    'SemesterListView',
+    'SemesterListView', 'SemesterDetailView', 'SemesterCreateView',
+	'SemesterUpdateView', 'SemesterDeleteView',
     'CurriculumSubjectListView', 'CurriculumSubjectCreateView', 'CurriculumSubjectDetailView',
+	'CurriculumSubjectUpdateView', 'CurriculumSubjectDeleteView',
     'StudySubjectListView', 'StudySubjectCreateView', 'StudySubjectDetailView',
-    
+	'StudySubjectUpdateView', 'StudySubjectDeleteView',
+
     # User views
     'CreateUserView',
 ]

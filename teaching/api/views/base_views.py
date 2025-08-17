@@ -7,7 +7,7 @@ that can be shared across different view modules.
 """
 
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -35,7 +35,7 @@ class BaseCreateView(generics.CreateAPIView):
     """
     Base create view with common functionality.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
     
     def create(self, request, *args, **kwargs):
         """
@@ -54,14 +54,14 @@ class BaseDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     Base detail view with common functionality.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class BaseUpdateView(generics.UpdateAPIView):
     """
     Base update view with common functionality.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
     
     def update(self, request, *args, **kwargs):
         """
@@ -80,7 +80,7 @@ class BaseDeleteView(generics.DestroyAPIView):
     """
     Base delete view with common functionality.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
     
     def destroy(self, request, *args, **kwargs):
         """

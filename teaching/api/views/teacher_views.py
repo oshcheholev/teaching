@@ -7,7 +7,7 @@ Includes list, create, detail, update, and delete operations.
 """
 
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from ..models import Teacher
 from ..serializers import TeacherSerializer, TeacherWriteSerializer
 
@@ -43,32 +43,32 @@ class TeacherView(generics.RetrieveUpdateDestroyAPIView):
     """Legacy view - kept for backward compatibility."""
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class TeacherCreateView(generics.CreateAPIView):
     """Create a new teacher."""
     queryset = Teacher.objects.all()
     serializer_class = TeacherWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class TeacherDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific teacher."""
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class TeacherUpdateView(generics.UpdateAPIView):
     """Update a specific teacher."""
     queryset = Teacher.objects.all()
     serializer_class = TeacherWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class TeacherDeleteView(generics.DestroyAPIView):
     """Delete a specific teacher."""
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]

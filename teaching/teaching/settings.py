@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
+# Uncomment these when ready for PostgreSQL migration:
+# from dotenv import load_dotenv
+# import dj_database_url
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +32,11 @@ SECRET_KEY = 'django-insecure-4rn=(q3_7)@)m=z(o97*3=*klc7_wkw!uouofdy92+n#_07b1+
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+# For PostgreSQL migration, uncomment these:
+# SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-4rn=(q3_7)@)m=z(o97*3=*klc7_wkw!uouofdy92+n#_07b1+')
+# DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -90,12 +100,30 @@ WSGI_APPLICATION = 'teaching.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# For now, continue using SQLite for development
+# PostgreSQL migration files are ready in scripts/migration/ for later use
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Uncomment below for PostgreSQL when ready to migrate:
+# DATABASE_URL = os.getenv('DATABASE_URL')
+# if DATABASE_URL:
+#     DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+# elif os.getenv('POSTGRES_DB'):
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': os.getenv('POSTGRES_DB', 'teaching_db'),
+#             'USER': os.getenv('POSTGRES_USER', 'postgres'),
+#             'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
+#             'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+#             'PORT': os.getenv('POSTGRES_PORT', '5432'),
+#         }
+#     }
 
 
 # Password validation

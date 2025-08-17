@@ -1,3 +1,5 @@
+# Additional packages for development and production
+
 asgiref
 Django
 djangorestframework

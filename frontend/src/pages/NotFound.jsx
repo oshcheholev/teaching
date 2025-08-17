@@ -16,13 +16,9 @@ function NotFound() {
 	  </Link>
 
 	  <div className="suggestions">
-		<h3>What can you do?</h3>
+		<h3>The requested URL was not found on this server.</h3>
 		<ul>
 		  <li><Link to="/">Go to the homepage</Link></li>
-		  <li><Link to="/courses">Browse all courses</Link></li>
-		  <li><Link to="/departments">View departments</Link></li>
-		  <li>Check the URL for typos</li>
-		  <li>Use the search functionality</li>
 		</ul>
 	  </div>
 	</div>

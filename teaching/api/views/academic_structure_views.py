@@ -9,7 +9,7 @@ This module contains views for academic structure models including:
 """
 
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from ..models import (
     StudyProgram, Department, Institute, Semester, 
     CurriculumSubject, StudySubject, Curicculum
@@ -36,28 +36,28 @@ class StudyProgramCreateView(generics.CreateAPIView):
     """Create a new study program."""
     queryset = StudyProgram.objects.all()
     serializer_class = StudyProgramWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class StudyProgramDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific study program."""
     queryset = StudyProgram.objects.all()
     serializer_class = StudyProgramSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class StudyProgramUpdateView(generics.UpdateAPIView):
     """Update a specific study program."""
     queryset = StudyProgram.objects.all()
     serializer_class = StudyProgramWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class StudyProgramDeleteView(generics.DestroyAPIView):
     """Delete a specific study program."""
     queryset = StudyProgram.objects.all()
     serializer_class = StudyProgramSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 # Department Views
@@ -72,28 +72,28 @@ class DepartmentCreateView(generics.CreateAPIView):
     """Create a new department."""
     queryset = Department.objects.all()
     serializer_class = DepartmentWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific department."""
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class DepartmentUpdateView(generics.UpdateAPIView):
     """Update a specific department."""
     queryset = Department.objects.all()
     serializer_class = DepartmentWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class DepartmentDeleteView(generics.DestroyAPIView):
     """Delete a specific department."""
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 # Institute Views
@@ -108,28 +108,28 @@ class InstituteCreateView(generics.CreateAPIView):
     """Create a new institute."""
     queryset = Institute.objects.all()
     serializer_class = InstituteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class InstituteDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific institute."""
     queryset = Institute.objects.all()
     serializer_class = InstituteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class InstituteUpdateView(generics.UpdateAPIView):
     """Update a specific institute."""
     queryset = Institute.objects.all()
     serializer_class = InstituteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class InstituteDeleteView(generics.DestroyAPIView):
     """Delete a specific institute."""
     queryset = Institute.objects.all()
     serializer_class = InstituteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 # Semester Views
@@ -171,6 +171,29 @@ class SemesterListView(generics.ListAPIView):
         
         return queryset
 
+class SemesterCreateView(generics.CreateAPIView):
+	"""Create a new semester."""
+	queryset = Semester.objects.all()
+	serializer_class = SemesterSerializer
+	permission_classes = [IsAdminUser]
+
+class SemesterDetailView(generics.RetrieveUpdateDestroyAPIView):
+	"""Retrieve, update or delete a specific semester."""
+	queryset = Semester.objects.all()
+	serializer_class = SemesterSerializer
+	permission_classes = [IsAdminUser]
+    
+class SemesterUpdateView(generics.UpdateAPIView):
+	"""Update a specific semester."""
+	queryset = Semester.objects.all()
+	serializer_class = SemesterSerializer
+	permission_classes = [IsAdminUser]
+    
+class SemesterDeleteView(generics.DestroyAPIView):
+	"""Delete a specific semester."""
+	queryset = Semester.objects.all()
+	serializer_class = SemesterSerializer
+	permission_classes = [IsAdminUser]
 
 # CurriculumSubject Views
 class CurriculumSubjectListView(generics.ListAPIView):
@@ -199,14 +222,26 @@ class CurriculumSubjectCreateView(generics.CreateAPIView):
     """Create a new curriculum subject."""
     queryset = CurriculumSubject.objects.all()
     serializer_class = CurriculumSubjectWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class CurriculumSubjectDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific curriculum subject."""
     queryset = CurriculumSubject.objects.all()
     serializer_class = CurriculumSubjectWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
+    
+class CurriculumSubjectUpdateView(generics.UpdateAPIView):
+	"""Update a specific curriculum subject."""
+	queryset = CurriculumSubject.objects.all()
+	serializer_class = CurriculumSubjectWriteSerializer
+	permission_classes = [IsAdminUser]
+     
+class CurriculumSubjectDeleteView(generics.DestroyAPIView):
+	"""Delete a specific curriculum subject."""
+	queryset = CurriculumSubject.objects.all()
+	serializer_class = CurriculumSubjectWriteSerializer
+	permission_classes = [IsAdminUser]
 
 
 # StudySubject Views
@@ -236,11 +271,23 @@ class StudySubjectCreateView(generics.CreateAPIView):
     """Create a new study subject."""
     queryset = StudySubject.objects.all()
     serializer_class = StudySubjectWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 
 class StudySubjectDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific study subject."""
     queryset = StudySubject.objects.all()
     serializer_class = StudySubjectWriteSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
+
+class StudySubjectUpdateView(generics.UpdateAPIView):
+	"""Update a specific study subject."""
+	queryset = StudySubject.objects.all()
+	serializer_class = StudySubjectWriteSerializer
+	permission_classes = [IsAdminUser]
+     
+class StudySubjectDeleteView(generics.DestroyAPIView):
+	"""Delete a specific study subject."""
+	queryset = StudySubject.objects.all()
+	serializer_class = StudySubjectWriteSerializer
+	permission_classes = [IsAdminUser]

@@ -2,6 +2,7 @@
 
 ## Overview
 
+This is the test implementation of Teaching App of University of Applied Arts Vienna
 The Teaching Platform API provides comprehensive access to course management functionality for the University of Applied Arts Vienna. This RESTful API supports both public course browsing and administrative operations.
 
 **Base URL:** `http://localhost:8000/api/`  

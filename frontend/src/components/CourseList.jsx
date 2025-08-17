@@ -16,12 +16,81 @@ function CourseList({ filters = { query: "", selectedTeachers: [] } }) {
 	// Fetch courses from API
 	useEffect(() => {
 		fetchCourses();
-	}, []);
+	}, [filters]); // Add filters as dependency
 
-	// Apply filters when courses or filters change
-	useEffect(() => {
-		applyFilters();
-	}, [courses, filters]);
+	const fetchCourses = async () => {
+		try {
+			setLoading(true);
+			setError(null);
+			
+			// Build query parameters from filters
+			const params = new URLSearchParams();
+			
+			// Add search query
+			if (filters.query && filters.query.trim()) {
+				params.append('search', filters.query.trim());
+			}
+			
+			// Add gender/diversity filter
+			if (filters.genderDiversityFilter) {
+				params.append('gender_diversity', 'true');
+			}
+			
+			// Add semester filter
+			if (filters.selectedSemesters && filters.selectedSemesters.length > 0) {
+				params.append('semester_format', filters.selectedSemesters[0].name);
+			}
+			
+			// Add teacher filter
+			if (filters.selectedTeachers && filters.selectedTeachers.length > 0) {
+				filters.selectedTeachers.forEach(teacher => {
+					params.append('teacher', teacher.id);
+				});
+			}
+			
+			// Add course type filter
+			if (filters.selectedCourseTypes && filters.selectedCourseTypes.length > 0) {
+				filters.selectedCourseTypes.forEach(type => {
+					params.append('type', type.id);
+				});
+			}
+			
+			// Add institute filter
+			if (filters.selectedInstitutes && filters.selectedInstitutes.length > 0) {
+				filters.selectedInstitutes.forEach(institute => {
+					params.append('institute', institute.id);
+				});
+			}
+			
+			// Add department filter
+			if (filters.selectedDepartments && filters.selectedDepartments.length > 0) {
+				filters.selectedDepartments.forEach(dept => {
+					params.append('department', dept.id);
+				});
+			}
+			
+			// Add study program filter
+			if (filters.selectedStudyPrograms && filters.selectedStudyPrograms.length > 0) {
+				filters.selectedStudyPrograms.forEach(program => {
+					params.append('study_program', program.id);
+				});
+			}
+			
+			const queryString = params.toString();
+			const url = queryString ? `/api/courses/?${queryString}` : '/api/courses/';
+			
+			console.log("Fetching courses with URL:", url);
+			const response = await api.get(url);
+			console.log("Courses response:", response.data);
+			setCourses(response.data);
+			setFilteredCourses(response.data); // Since filtering is done server-side
+		} catch (err) {
+			console.error("Error fetching courses:", err);
+			setError(`Failed to fetch courses: ${err.message}`);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	// Apply pagination when filtered courses or current page changes
 	useEffect(() => {
@@ -32,86 +101,6 @@ function CourseList({ filters = { query: "", selectedTeachers: [] } }) {
 	useEffect(() => {
 		setCurrentPage(1);
 	}, [filters]);
-
-	const fetchCourses = async () => {
-		try {
-			setLoading(true);
-			setError(null);
-			console.log("Attempting to fetch courses from:", api.defaults.baseURL + "/api/courses/");
-			
-			const response = await api.get("/api/courses/");
-			console.log("Courses response:", response.data);
-			setCourses(response.data);
-		} catch (err) {
-			console.error("Error fetching courses:", err);
-			setError(`Failed to fetch courses: ${err.message}`);
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	const applyFilters = () => {
-		let filtered = [...courses];
-
-		// Apply text search filter
-		if (filters.query && filters.query.trim()) {
-			const searchQuery = filters.query.toLowerCase().trim();
-			filtered = filtered.filter(course => 
-				course.title.toLowerCase().includes(searchQuery) ||
-				course.description.toLowerCase().includes(searchQuery) ||
-				(course.teacher && course.teacher.name.toLowerCase().includes(searchQuery))
-			);
-		}
-
-		// Apply teacher filter
-		if (filters.selectedTeachers && filters.selectedTeachers.length > 0) {
-			const selectedTeacherIds = filters.selectedTeachers.map(teacher => teacher.id);
-			filtered = filtered.filter(course => 
-				course.teacher && selectedTeacherIds.includes(course.teacher.id)
-			);
-		}
-
-		// Apply course type filter
-		if (filters.selectedCourseTypes && filters.selectedCourseTypes.length > 0) {
-			const selectedCourseTypeIds = filters.selectedCourseTypes.map(type => type.id);
-			filtered = filtered.filter(course => 
-				course.course_type && selectedCourseTypeIds.includes(course.course_type.id)
-			);
-		}
-
-		// Apply institute filter
-		if (filters.selectedInstitutes && filters.selectedInstitutes.length > 0) {
-			const selectedInstituteIds = filters.selectedInstitutes.map(institute => institute.id);
-			filtered = filtered.filter(course => 
-				course.institute && selectedInstituteIds.includes(course.institute.id)
-			);
-		}
-
-		// Apply department filter
-		if (filters.selectedDepartments && filters.selectedDepartments.length > 0) {
-			const selectedDepartmentIds = filters.selectedDepartments.map(dept => dept.id);
-			filtered = filtered.filter(course => 
-				course.department && selectedDepartmentIds.includes(course.department.id)
-			);
-		}
-
-		// Apply study program filter
-		if (filters.selectedStudyPrograms && filters.selectedStudyPrograms.length > 0) {
-			const selectedStudyProgramIds = filters.selectedStudyPrograms.map(program => program.id);
-			filtered = filtered.filter(course => 
-				course.study_program && selectedStudyProgramIds.includes(course.study_program.id)
-			);
-		}
-
-		// Apply gender/diversity filter
-		if (filters.genderDiversityFilter) {
-			filtered = filtered.filter(course => 
-				course.teacher && course.teacher.gender_diverse === true
-			);
-		}
-
-		setFilteredCourses(filtered);
-	};
 
 	const applyPagination = () => {
 		const startIndex = (currentPage - 1) * COURSES_PER_PAGE;
@@ -204,7 +193,8 @@ function CourseList({ filters = { query: "", selectedTeachers: [] } }) {
 									onClick={() => handlePageChange(currentPage - 1)}
 									disabled={currentPage === 1}
 								>
-									‹ Previous
+									{"<<"}
+									{/* Previous ‹ */}
 								</button>
 
 								{/* Page numbers */}
@@ -228,7 +218,7 @@ function CourseList({ filters = { query: "", selectedTeachers: [] } }) {
 									onClick={() => handlePageChange(currentPage + 1)}
 									disabled={currentPage === totalPages}
 								>
-									Next ›
+									{">>"}
 								</button>
 							</div>
 
@@ -248,6 +238,9 @@ function CourseList({ filters = { query: "", selectedTeachers: [] } }) {
 											}
 										}}
 										className="page-input"
+										aria-label="Go to page number"
+										title="Enter page number to navigate"
+										placeholder="Page"
 									/>
 								</span>
 							</div>
