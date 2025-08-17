@@ -1,7 +1,7 @@
 
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Course, CourseType, StudyProgram, Teacher, Department, Curicculum, Institute
+from .models import Course, CourseType, StudyProgram, Teacher, Department, Curicculum, Institute, Semester, CurriculumSubject, StudySubject
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -106,6 +106,12 @@ class CuricculumSerializer(serializers.ModelSerializer):
 		read_only_fields = ['id']
 		depth = 1
 
+class SemesterSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Semester
+		fields = '__all__'
+		read_only_fields = ['id']
+
 # User serializer for creating users
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -116,3 +122,28 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+
+class CurriculumSubjectSerializer(serializers.ModelSerializer):
+    study_program_name = serializers.CharField(source='study_program.name', read_only=True)
+    
+    class Meta:
+        model = CurriculumSubject
+        fields = ['id', 'name', 'description', 'study_program', 'study_program_name', 'credits', 'semester_number', 'is_mandatory']
+
+class CurriculumSubjectWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CurriculumSubject
+        fields = ['id', 'name', 'description', 'study_program', 'credits', 'semester_number', 'is_mandatory']
+
+class StudySubjectSerializer(serializers.ModelSerializer):
+    curriculum_subject_name = serializers.CharField(source='curriculum_subject.name', read_only=True)
+    study_program_name = serializers.CharField(source='curriculum_subject.study_program.name', read_only=True)
+    
+    class Meta:
+        model = StudySubject
+        fields = ['id', 'name', 'description', 'curriculum_subject', 'curriculum_subject_name', 'study_program_name', 'credits', 'hours_per_week', 'subject_type']
+
+class StudySubjectWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudySubject
+        fields = ['id', 'name', 'description', 'curriculum_subject', 'credits', 'hours_per_week', 'subject_type']

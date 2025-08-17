@@ -53,5 +53,18 @@ urlpatterns = [
 	path('institutes/add/', views.InstituteCreateView.as_view(), name='institute-create'),
 	path('institutes/<int:pk>/update/', views.InstituteUpdateView.as_view(), name='institute-update'),
 	path('institutes/<int:pk>/delete/', views.InstituteDeleteView.as_view(), name='institute-delete'),
+
+	# Semesters
+	path('semesters/', views.SemesterListView.as_view(), name='semester-list'),
+
+	# Curriculum Subjects
+	path('curriculum-subjects/', views.CurriculumSubjectListView.as_view(), name='curriculum-subject-list'),
+	path('curriculum-subjects/<int:pk>/', views.CurriculumSubjectDetailView.as_view(), name='curriculum-subject-detail'),
+	path('curriculum-subjects/add/', views.CurriculumSubjectCreateView.as_view(), name='curriculum-subject-create'),
+
+	# Study Subjects
+	path('study-subjects/', views.StudySubjectListView.as_view(), name='study-subject-list'),
+	path('study-subjects/<int:pk>/', views.StudySubjectDetailView.as_view(), name='study-subject-detail'),
+	path('study-subjects/add/', views.StudySubjectCreateView.as_view(), name='study-subject-create'),
 ]
 
