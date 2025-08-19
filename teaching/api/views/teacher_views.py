@@ -43,7 +43,16 @@ class TeacherView(generics.RetrieveUpdateDestroyAPIView):
     """Legacy view - kept for backward compatibility."""
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
-    permission_classes = [IsAdminUser]
+    
+    def get_permissions(self):
+        """
+        Return different permissions based on action.
+        - GET (retrieve): Allow anyone
+        - PUT/PATCH/DELETE: Require admin
+        """
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [IsAdminUser()]
 
 
 class TeacherCreateView(generics.CreateAPIView):
@@ -57,7 +66,16 @@ class TeacherDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific teacher."""
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
-    permission_classes = [IsAdminUser]
+    
+    def get_permissions(self):
+        """
+        Return different permissions based on action.
+        - GET (retrieve): Allow anyone
+        - PUT/PATCH/DELETE: Require admin
+        """
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [IsAdminUser()]
 
 
 class TeacherUpdateView(generics.UpdateAPIView):

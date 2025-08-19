@@ -13,7 +13,6 @@ class Course(models.Model):
 	description = models.TextField()
 	type = models.ForeignKey('CourseType', on_delete=models.CASCADE, null=True, blank=True)
 	# Removed single semester field, replaced with many-to-many relationship below
-	semester_format = models.CharField(max_length=10, blank=True, null=True, help_text="e.g., 2025W, 2026S")  # Allow null initially
 	year = models.IntegerField(null=True, blank=True)
 	start_date = models.DateField(null=True, blank=True)
 	end_date = models.DateField(null=True, blank=True)
@@ -35,7 +34,7 @@ class Course(models.Model):
 		ordering = ['course_code', 'title']
 		indexes = [
 			models.Index(fields=['course_code']),
-			models.Index(fields=['year', 'semester_format']),
+			models.Index(fields=['year']),
 		]
 
 	def clean(self):

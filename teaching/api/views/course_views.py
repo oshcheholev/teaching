@@ -20,12 +20,12 @@ class CourseListView(generics.ListAPIView):
     
     Supported filters:
     - gender_diversity: true/false
-    - semester_format: e.g., 2025W, 2026S
     - teacher: teacher ID(s) - supports multiple
     - type: course type ID(s) - supports multiple  
     - institute: institute ID(s) - supports multiple
     - department: department ID(s) - supports multiple
     - study_program: study program ID(s) - supports multiple
+    - semester: semester ID(s) - supports multiple
     - search: text search in course titles
     """
     queryset = Course.objects.all()
@@ -40,11 +40,6 @@ class CourseListView(generics.ListAPIView):
         if gender_diversity is not None:
             gender_diversity = gender_diversity.lower() == 'true'
             queryset = queryset.filter(gender_diversity=gender_diversity)
-        
-        # Filter by semester format
-        semester_format = self.request.query_params.get('semester_format', None)
-        if semester_format is not None:
-            queryset = queryset.filter(semester_format=semester_format)
         
         # Filter by teacher (can be multiple)
         teacher_ids = self.request.query_params.getlist('teacher')
@@ -95,7 +90,16 @@ class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific course."""
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = [IsAdminUser]
+    
+    def get_permissions(self):
+        """
+        Return different permissions based on action.
+        - GET (retrieve): Allow anyone
+        - PUT/PATCH/DELETE: Require admin
+        """
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [IsAdminUser()]
 
 
 class CourseUpdateView(generics.UpdateAPIView):
@@ -131,7 +135,16 @@ class CourseTypeDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a specific course type."""
     queryset = CourseType.objects.all()
     serializer_class = CourseTypeSerializer
-    permission_classes = [IsAdminUser]
+    
+    def get_permissions(self):
+        """
+        Return different permissions based on action.
+        - GET (retrieve): Allow anyone
+        - PUT/PATCH/DELETE: Require admin
+        """
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [IsAdminUser()]
 
 
 class CourseTypeUpdateView(generics.UpdateAPIView):

@@ -47,7 +47,7 @@ class CourseAdmin(admin.ModelAdmin):
             'fields': ('course_code', 'title', 'description', 'type', 'credits')
         }),
         ('Schedule', {
-            'fields': ('semesters', 'year', 'semester_format', 'start_date', 'end_date')
+            'fields': ('semesters', 'year', 'start_date', 'end_date')
         }),
         ('Assignment', {
             'fields': ('teacher', 'institute', 'department', 'study_program')
